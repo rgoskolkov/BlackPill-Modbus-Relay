@@ -1,0 +1,16 @@
+{
+  "name": "Modbus-STM32-HAL-FreeRTOS-local",
+  "version": "1.0.0",
+  "description": "A local copy of Modbus library for STM32 with FreeRTOS",
+  "keywords": "modbus, stm32, freertos",
+  "authors": [
+    {
+      "name": "Alejandro Mera",
+      "url": "https://github.com/alejoseb"
+    }
+  ],
+  "build": {
+    "srcDir": "Src",
+    "includeDir": "Inc"
+  }
+}

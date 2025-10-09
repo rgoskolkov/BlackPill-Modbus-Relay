@@ -1,0 +1,13 @@
+{
+  "name": "STM32_USB_Device_Library-local",
+  "version": "1.0.0",
+  "description": "A local copy of CubeMX generated USB Device library for STM32",
+  "keywords": "stm32, usb",
+  "build": {
+    "srcDir": ".",
+    "includeDir": "Core/Inc",
+    "flags": [
+      "-I Class/CDC/Inc"
+    ]
+  }
+}

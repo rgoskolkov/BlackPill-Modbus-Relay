@@ -1,0 +1,14 @@
+{
+  "name": "FreeRTOS-local",
+  "version": "10.4.3",
+  "description": "Local copy of FreeRTOS kernel",
+  "keywords": "rtos, freertos",
+  "build": {
+    "srcDir": "source/.",
+    "includeDir": "source/include",
+    "flags": [
+      "-I source/CMSIS_RTOS_V2",
+      "-I source/portable/GCC/ARM_CM3"
+    ]
+  }
+}
