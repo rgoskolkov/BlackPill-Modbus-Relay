@@ -58,7 +58,7 @@ void sync_task(void *argument)
         if (flags & FLAG_SYNC_FROM_MODBUS) {
             uint16_t current_coils_state = usRegHolding[0];
             if (previous_coils_state != current_coils_state) {
-                for (int i = 0; i < 8; i++) {
+                for (int i = 0; i < NUM_RELAYS; i++) {
                     if ((previous_coils_state & (1 << i)) != (current_coils_state & (1 << i))) {
                         if ((current_coils_state & (1 << i))) {
                             relay_on(i);
@@ -74,7 +74,7 @@ void sync_task(void *argument)
 
         if (flags & FLAG_SYNC_FROM_RELAY) {
              uint16_t actual_state = 0;
-            for (int i = 0; i < 8; i++) {
+            for (int i = 0; i < NUM_RELAYS; i++) {
                 if (Relay_GetState(i)) {
                     actual_state |= (1 << i);
                 }

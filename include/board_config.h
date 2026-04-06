@@ -17,6 +17,10 @@
 #define NUM_SWITCHES 8U
 #endif
 
+#ifndef NUM_RELAYS
+#define NUM_RELAYS 8U
+#endif
+
 #ifndef MODBUS_BAUDRATE
 #define MODBUS_BAUDRATE 115200U
 #endif
@@ -86,7 +90,14 @@
 #define SWITCH7_PORT SWITCH7_GPIO_Port
 #define SWITCH8_PIN SWITCH8_Pin
 #define SWITCH8_PORT SWITCH8_GPIO_Port
-
+#define SWITCH9_PIN SWITCH9_Pin
+#define SWITCH9_PORT SWITCH9_GPIO_Port
+#define SWITCH10_PIN SWITCH10_Pin
+#define SWITCH10_PORT SWITCH10_GPIO_Port
+#define SWITCH11_PIN SWITCH11_Pin
+#define SWITCH11_PORT SWITCH11_GPIO_Port
+#define SWITCH12_PIN SWITCH12_Pin
+#define SWITCH12_PORT SWITCH12_GPIO_Port
 
 /* =================================================================================
    Hardware Peripheral Mapping
@@ -102,11 +113,29 @@ extern UART_HandleTypeDef huart2;
 
 
 /* =================================================================================
+   Switch-to-Relay Mapping
+   Каждый выключатель привязан к конкретному реле.
+   Массив switch_to_relay_map задаётся в board_config.c и должен быть
+   размером NUM_SWITCHES. Каждое значение — индекс реле (0..NUM_RELAYS-1).
+
+   ВАЛИДАЦИЯ НА ЭТАПЕ СБОРКИ:
+   - Если NUM_SWITCHES > NUM_RELAYS, маппинг должен быть задан явно
+   - Все значения маппинга должны быть < NUM_RELAYS
+   - Каждое реле должно быть привязано хотя бы к одному выключателю
+==================================================================================*/
+
+extern const uint8_t switch_to_relay_map[NUM_SWITCHES];
+
+/* Макрос валидации: все значения маппинга в допустимом диапазоне */
+/* Используется в board_config.c через SWITCH_MAP_VALIDATION */
+#define VALIDATE_MAPPING_VALUE(val) ((val) < NUM_RELAYS)
+
+/* =================================================================================
    Hardware Porting Layer: Pin Mapping Arrays (extern)
 ==================================================================================*/
 
-extern const GPIO_TypeDef* const relay_ports[NUM_SWITCHES];
-extern const uint16_t relay_pins[NUM_SWITCHES];
+extern const GPIO_TypeDef* const relay_ports[NUM_RELAYS];
+extern const uint16_t relay_pins[NUM_RELAYS];
 extern const GPIO_TypeDef* const switch_ports[NUM_SWITCHES];
 extern const uint16_t switch_pins[NUM_SWITCHES];
 

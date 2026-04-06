@@ -9,8 +9,9 @@
 
 void background_task(void *argument)
 {
+    #if MONITOR_TASK == 1
     uint32_t last_monitor_tick = 0;
-
+    #endif
     for(;;)
     {
         // High-frequency polling for button

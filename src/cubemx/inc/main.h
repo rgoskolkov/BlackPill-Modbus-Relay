@@ -82,6 +82,14 @@ void Error_Handler(void);
 #define RELAY2_GPIO_Port GPIOB
 #define RELAY1_Pin GPIO_PIN_10
 #define RELAY1_GPIO_Port GPIOB
+#define SWITCH9_Pin GPIO_PIN_12
+#define SWITCH9_GPIO_Port GPIOB
+#define SWITCH10_Pin GPIO_PIN_13
+#define SWITCH10_GPIO_Port GPIOB
+#define SWITCH11_Pin GPIO_PIN_14
+#define SWITCH11_GPIO_Port GPIOB
+#define SWITCH12_Pin GPIO_PIN_15
+#define SWITCH12_GPIO_Port GPIOB
 #define SWITCH1_Pin GPIO_PIN_15
 #define SWITCH1_GPIO_Port GPIOA
 #define SWITCH2_Pin GPIO_PIN_3

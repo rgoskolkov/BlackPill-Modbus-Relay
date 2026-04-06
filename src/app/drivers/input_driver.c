@@ -8,14 +8,11 @@
 #define DEBOUNCE_POLL_PERIOD_MS 20
 #define DEBOUNCE_TICKS (DEBOUNCE_MS / DEBOUNCE_POLL_PERIOD_MS)
 
-static bool switch_state[NUM_SWITCHES];
-
 static uint8_t debounce_counter[NUM_SWITCHES];
 static uint8_t stable_state[NUM_SWITCHES];
 
 void Input_Init(void)
 {
-    memset(switch_state, 0, sizeof(switch_state));
     memset(debounce_counter, 0, sizeof(debounce_counter));
     for(int i=0; i<NUM_SWITCHES; i++)
     {
@@ -30,9 +27,11 @@ void process_switch_event(uint8_t i)
 {
     if (i >= NUM_SWITCHES) return;
     printf("change state\r\n");
-    switch_state[i] = !switch_state[i];
     led_signal_ack();
-    relay_toggle(i);
+
+    // Определяем, к какому реле привязан этот выключатель
+    uint8_t relay_idx = switch_to_relay_map[i];
+    relay_toggle(relay_idx);
 }
 
 void input_task(void *argument)
