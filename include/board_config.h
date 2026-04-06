@@ -22,7 +22,7 @@
 #endif
 
 #ifndef MODBUS_SLAVE_ID
-#define MODBUS_SLAVE_ID 2U
+#define MODBUS_SLAVE_ID 1U
 #endif
 
 /* MODBUS_UART_PARITY: 0 = NONE, 1 = ODD, 2 = EVEN */
@@ -48,7 +48,7 @@
 /* ----------------------------------------- */
 
 #ifndef DEBOUNCE_MS
-#define DEBOUNCE_MS 300U
+#define DEBOUNCE_MS 80U
 #endif
 
 /* Relay pins (берутся напрямую из main.h) */
